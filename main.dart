@@ -1,43 +1,44 @@
+num sum<T extends num>(List<T> list) {
+  if (list.isEmpty) {
+    print('The list is empty.');
+    return 0;
+  }
+  num sum = 0;
+  for (var number in list) {
+    sum += number;
+  }
+  return sum;
+}
+
+class Test<T extends num> {
+  T? item;
+  Test({this.item});
+
+  T? testGet() => item;
+}
+
+class TestString {
+  String item;
+  TestString(this.item);
+
+  String testGet() => item;
+}
+
+class TestInt {
+  int item;
+  TestInt(this.item);
+
+  int testGet() => item;
+  var t = Test<double>();
+}
+
 void main() {
-  String name = "";
-  String coffee = "Coffee";
-  String? milk;
-  String milk2 = milk ?? "Dairy";
-  print(isEmpty(name));
-  //print(isEmpty(null));
-  makeCoffee(coffee, milk);
-  printLen(milk);
-  realString(coffee);
-  milk = 'Dairy';
-  notNullable(milk);
-  notNullable(milk2);
+  List<double> nums = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6];
+  print('Sum: ${sum(nums)}');
 
-  Person p = Person();
-  print('Name: ${p.name ?? "Mohammad"} and age: ${p.address ?? "Yahfoufi"}');
-}
+  var testString = TestString('Hello');
+  print('TestString: ${testString.testGet()}');
 
-bool isEmpty(String string) => string.length == 0;
-
-void makeCoffee(String coffee, [String? milk]) {
-  if (milk != null) {
-    print('$coffee with $milk');
-  } else
-    print('Black $coffee');
-}
-
-void printLen(String? string) {
-  print(string?.length);
-}
-
-void realString(String definitelyString) {
-  print(definitelyString.length);
-}
-
-void notNullable(String? string) {
-  print(string!.length);
-}
-
-class Person {
-  String? name;
-  String? address;
+  var testInt = TestInt(42);
+  print('TestInt: ${testInt.testGet()}');
 }
