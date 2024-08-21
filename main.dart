@@ -1,44 +1,31 @@
-num sum<T extends num>(List<T> list) {
-  if (list.isEmpty) {
-    print('The list is empty.');
-    return 0;
-  }
-  num sum = 0;
-  for (var number in list) {
-    sum += number;
-  }
-  return sum;
+typedef int Operation(int a, int b);
+
+int add(int a, int b) {
+  return a + b;
 }
 
-class Test<T extends num> {
-  T? item;
-  Test({this.item});
-
-  T? testGet() => item;
+int sub(int a, int b) {
+  return a - b;
 }
 
-class TestString {
-  String item;
-  TestString(this.item);
-
-  String testGet() => item;
+int mult(int a, int b) {
+  return a * b;
 }
 
-class TestInt {
-  int item;
-  TestInt(this.item);
+void calc(int a, int b, Operation op) {
+  var res = op(a, b);
+  print("Result $res");
+}
 
-  int testGet() => item;
-  var t = Test<double>();
+wrongAdd(String a, b) {
+  return a + b;
 }
 
 void main() {
-  List<double> nums = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6];
-  print('Sum: ${sum(nums)}');
+  var x = 1, y = 1;
 
-  var testString = TestString('Hello');
-  print('TestString: ${testString.testGet()}');
-
-  var testInt = TestInt(42);
-  print('TestInt: ${testInt.testGet()}');
+  calc(x, y, add);
+  calc(x, y, sub);
+  calc(x, y, mult);
+  // calc(x, y, wrongAdd);
 }
