@@ -1,44 +1,30 @@
-num sum<T extends num>(List<T> list) {
-  if (list.isEmpty) {
-    print('The list is empty.');
-    return 0;
+abstract class ItemAdder<T> {
+  T add(T t1, T t2);
+}
+
+class IntegersAdder extends ItemAdder<int> {
+  int add(t1, t2) {
+    return t1 + t2;
   }
-  num sum = 0;
-  for (var number in list) {
-    sum += number;
+}
+
+class StringsAdder extends ItemAdder<String> {
+  String add(t1, t2) {
+    return t1 + t2;
   }
-  return sum;
 }
 
-class Test<T extends num> {
-  T? item;
-  Test({this.item});
-
-  T? testGet() => item;
-}
-
-class TestString {
-  String item;
-  TestString(this.item);
-
-  String testGet() => item;
-}
-
-class TestInt {
-  int item;
-  TestInt(this.item);
-
-  int testGet() => item;
-  var t = Test<double>();
+class DoublesAdder extends ItemAdder<double> {
+  double add(t1, t2) {
+    return t1 + t2;
+  }
 }
 
 void main() {
-  List<double> nums = [1.1, 2.2, 3.3, 4.4, 5.5, 6.6];
-  print('Sum: ${sum(nums)}');
-
-  var testString = TestString('Hello');
-  print('TestString: ${testString.testGet()}');
-
-  var testInt = TestInt(42);
-  print('TestInt: ${testInt.testGet()}');
+  ItemAdder<int> integersAdder = IntegersAdder();
+  ItemAdder<String> stringsAdder = StringsAdder();
+  ItemAdder<double> doublesAdder = DoublesAdder();
+  print(integersAdder.add(1, 2));
+  print(stringsAdder.add("Hello ", "World"));
+  print(doublesAdder.add(1.1, 2.2));
 }
