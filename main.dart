@@ -1,4 +1,11 @@
 typedef int Operation(int a, int b);
+typedef String PrintFunction(String x);
+
+String prints(String x) => x;
+
+void printo(String a, PrintFunction printFunction) {
+  print(printFunction(a));
+}
 
 int add(int a, int b) {
   return a + b;
@@ -28,4 +35,5 @@ void main() {
   calc(x, y, sub);
   calc(x, y, mult);
   // calc(x, y, wrongAdd);
+  printo("Hello, World!", prints);
 }
