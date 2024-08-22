@@ -20,7 +20,6 @@ class DoublesAdder extends ItemAdder<double> {
   }
 }
 
-//
 void main() {
   ItemAdder<int> integersAdder = IntegersAdder();
   ItemAdder<String> stringsAdder = StringsAdder();
