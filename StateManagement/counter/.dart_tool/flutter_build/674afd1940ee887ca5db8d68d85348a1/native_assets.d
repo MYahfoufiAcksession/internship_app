@@ -1,0 +1,1 @@
+ D:\\App\ Develop\\Dart\\StateManagement\\counter\\.dart_tool\\flutter_build\\674afd1940ee887ca5db8d68d85348a1\\native_assets.yaml: 
